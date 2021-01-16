@@ -1,0 +1,7 @@
+pytest
+pytest-mock
+pytest-cov
+covdefaults
+coverage
+codecov
+tox

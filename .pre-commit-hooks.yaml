@@ -1,0 +1,20 @@
+- id: maven-goals
+  name: maven goals
+  description: Runs arbitrary maven goals for java projects
+  entry: maven-goals
+  language: python
+  pass_filenames: false
+
+- id: maven-spotless-check
+  name: maven spotless check
+  description: Runs spotless:check goal
+  entry: maven-spotless-check
+  language: python
+  pass_filenames: false
+
+- id: maven-spotless-apply
+  name: maven spotless apply
+  description: Runs spotless:apply goal
+  entry: maven-spotless-apply
+  language: python
+  pass_filenames: false

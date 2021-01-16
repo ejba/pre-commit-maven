@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools >= 40.6.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project.optional-dependencies]
+tests = [
+  'coverage>=5.0.3',
+  'covdefaults',
+  'pytest',
+  'pytest-benchmark[histogram]>=3.2.1',
+  'pytest-mock',
+  'tox',
+]
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q"
+testpaths = [
+    "tests",
+    "integration",
+]
