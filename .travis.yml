@@ -7,6 +7,11 @@ python:
   - "nightly"
 env:
   - CODECOV_TOKEN=194cff37-3a7a-4186-aaff-8f4d82fc9fb1
+before_install:
+  - sudo apt-get -y install openjdk-8-jdk-headless maven
+addons:
+  apt:
+    update: true
 install:
   - pip install -r requirements-dev.txt
   - pip install .
