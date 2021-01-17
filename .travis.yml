@@ -7,8 +7,6 @@ install:
   - pip install -r requirements-dev.txt
   - pip install .
 script:
-  - source ./jdk_switcher.sh
-  - jdk_switcher use oraclejdk10
   - mvn --version
   - java --version
   - coverage erase
