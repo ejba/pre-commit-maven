@@ -7,7 +7,7 @@
 
 - id: maven-test
   name: maven test
-  description: Runs maven test build lifecycle for java projects
+  description: Runs maven test build lifecycle
   entry: maven-test
   language: python
   pass_filenames: false
