@@ -5,10 +5,10 @@
   language: python
   pass_filenames: false
 
-- id: maven-clean
-  name: maven clean
+- id: maven-test
+  name: maven test
   description: Runs maven test build lifecycle for java projects
-  entry: maven-clean
+  entry: maven-test
   language: python
   pass_filenames: false
 

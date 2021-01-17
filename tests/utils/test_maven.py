@@ -1,19 +1,21 @@
 import pytest
 from pytest_mock import MockerFixture
-from pre_commit_maven.utils.maven import execute_goals
+from pre_commit_maven.utils.maven import execute
 from pre_commit_maven.utils.maven import print_error
 from pre_commit_maven.utils.maven import Colours
 from pre_commit_maven.utils.shell import ExecutionResult
 
+MAVEN_OPTS = "-client -XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Xverify:none"
+
 
 def test_given_empty_goals_then_throws_assertion_error():
     with pytest.raises(AssertionError) as e:
-        execute_goals([], ".")
+        execute([], ".")
 
 
 def test_given_none_goals_then_throws_assertion_error():
     with pytest.raises(AssertionError) as e:
-        execute_goals(None, ".")
+        execute(None, ".")
 
 
 def test_given_goals_then_run_maven(mocker):
@@ -23,11 +25,13 @@ def test_given_goals_then_run_maven(mocker):
     shell_runner.execute.return_value = ExecutionResult(0, "", "")
 
     # when
-    execute_goals(["clean"], ".", shell_runner)
+    execute(["clean"], ".", shell_runner)
 
     # then
     shell_runner.exists_file.assert_called_once_with("./mvnw")
-    shell_runner.execute.assert_called_once_with(["mvn", "-B", "clean"], cwd=".")
+    shell_runner.execute.assert_called_once_with(
+        ["mvn", "--batch-mode", "clean"], cwd=".", env={"MAVEN_OPTS": MAVEN_OPTS}
+    )
 
 
 def test_given_mvnw_exists_then_run_mvnw(mocker):
@@ -37,11 +41,13 @@ def test_given_mvnw_exists_then_run_mvnw(mocker):
     shell_runner.execute.return_value = ExecutionResult(0, "", "")
 
     # when
-    execute_goals(["clean"], ".", shell_runner)
+    execute(["clean"], ".", shell_runner)
 
     # then
     shell_runner.exists_file.assert_called_once_with("./mvnw")
-    shell_runner.execute.assert_called_once_with(["./mvnw", "-B", "clean"], cwd=".")
+    shell_runner.execute.assert_called_once_with(
+        ["./mvnw", "--batch-mode", "clean"], cwd=".", env={"MAVEN_OPTS": MAVEN_OPTS}
+    )
 
 
 def test_given_stdout_without_error_log_then_prints_nothing(mocker):

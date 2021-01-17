@@ -14,7 +14,7 @@ class ExecutionResult:
         self.stderr = stderr
 
 
-def execute(cmd: list, **kwargs):
+def execute(cmd, **kwargs):
     assert cmd is not None and len(cmd) > 0, "cmd is empty"
 
     kwargs.setdefault("stdout", subprocess.PIPE)
@@ -23,6 +23,7 @@ def execute(cmd: list, **kwargs):
     kwargs.setdefault("shell", True)
     kwargs.setdefault("bufsize", 1)
 
+    print(kwargs)
     process = subprocess.Popen(" ".join(cmd), **kwargs)
     stdout, stderr = process.communicate()
 

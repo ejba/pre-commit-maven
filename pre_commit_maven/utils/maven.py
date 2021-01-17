@@ -5,6 +5,14 @@ import os.path
 from pre_commit_maven.utils import shell
 from pre_commit_maven.utils.shell import ExecutionResult
 
+MAVEN_CLI_OPTS = ["--batch-mode"]
+MAVEN_OPTS = [
+    "-client",
+    "-XX:+TieredCompilation",
+    "-XX:TieredStopAtLevel=1",
+    "-Xverify:none",
+]
+
 
 class Colours:
     HEADER = "\033[95m"
@@ -27,10 +35,12 @@ def get_maven_path(cwd: str, shell_runner=shell):
     return path
 
 
-def execute_goals(goals: list, cwd: str, shell_runner=shell):
-    assert goals is not None and len(goals) > 0, "goals not specified"
-    cmd = [get_maven_path(cwd, shell_runner), "-B"] + goals
-    return shell_runner.execute(cmd, cwd=cwd)
+def execute(args: list, cwd: str, shell_runner=shell):
+    assert args is not None and len(args) > 0, "args not specified"
+
+    cmd = [get_maven_path(cwd, shell_runner)] + MAVEN_CLI_OPTS + args
+    env = {"MAVEN_OPTS": " ".join(MAVEN_OPTS)}
+    return shell_runner.execute(cmd, cwd=cwd, env=env)
 
 
 def print_error(execution_result: ExecutionResult, print_fn=print):
