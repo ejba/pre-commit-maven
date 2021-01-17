@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 import argparse
 import os.path
 from pre_commit_maven.utils import maven
