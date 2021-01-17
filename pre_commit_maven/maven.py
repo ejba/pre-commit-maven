@@ -3,6 +3,7 @@ from __future__ import print_function
 import argparse
 import os.path
 from pre_commit_maven.utils import maven
+from pre_commit_maven.utils import generic_main
 
 CWD = os.getcwd()
 
@@ -16,11 +17,7 @@ def main(argv: list, cwd=CWD, print_fn=print) -> int:
         print_fn("goals not specified")
         return 1
 
-    execution_result = maven.execute_goals(args.goals, cwd)
-    if execution_result.return_code != 0:
-        maven.print_error(execution_result)
-
-    return execution_result.return_code
+    return generic_main.execute(args.goals, cwd)
 
 
 if __name__ == "__main__":

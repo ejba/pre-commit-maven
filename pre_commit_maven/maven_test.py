@@ -1,16 +1,12 @@
 import argparse
 import os.path
-from pre_commit_maven.utils import maven
+from pre_commit_maven.utils import generic_main
 
 CWD = os.getcwd()
 
 
 def main(cwd=CWD, print_fn=print) -> int:
-    execution_result = maven.execute_goals(["clean", "test"], cwd)
-    if execution_result.return_code != 0:
-        maven.print_error(execution_result)
-
-    return execution_result.return_code
+    return generic_main.execute(["clean", "test"], cwd)
 
 
 if __name__ == "__main__":
