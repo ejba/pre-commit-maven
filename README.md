@@ -1,4 +1,4 @@
-pre-commit-maven (WIP)
+pre-commit-maven
 ================
 
 [![Build Status](https://travis-ci.com/ejba/pre-commit-maven.svg?branch=main)](https://travis-ci.com/ejba/pre-commit-maven) [![Code Coverage](https://img.shields.io/codecov/c/github/ejba/pre-commit-maven/main.svg)](https://codecov.io/github/ejba/pre-commit-maven?branch=main)
@@ -19,6 +19,7 @@ repos:
     hooks:
     -   id: maven
         args: ['clean compile']
+    -   id: maven-spotless-apply
     # -   id: ...
 ```
 
