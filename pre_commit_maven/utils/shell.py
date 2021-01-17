@@ -20,9 +20,8 @@ def execute(cmd: list, **kwargs):
     kwargs.setdefault("stderr", subprocess.PIPE)
     kwargs.setdefault("universal_newlines", True)
     kwargs.setdefault("shell", True)
-    kwargs.setdefault("bufsize", 0)
+    kwargs.setdefault("bufsize", 1)
 
-    print(cmd)
     process = subprocess.Popen(" ".join(cmd), **kwargs)
     stdout, stderr = process.communicate()
 

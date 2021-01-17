@@ -8,7 +8,7 @@ CWD = os.getcwd()
 def main(cwd=CWD, print_fn=print) -> int:
     execution_result = maven.execute_goals(["spotless:check"], cwd)
     if execution_result.return_code != 0:
-        print_fn(execution_result.stdout)
+        maven.print_error(execution_result)
 
     return execution_result.return_code
 

@@ -16,7 +16,7 @@ def main(argv: list, cwd=CWD, print_fn=print) -> int:
 
     execution_result = maven.execute_goals(args.goals, cwd)
     if execution_result.return_code != 0:
-        print_fn(execution_result.stdout)
+        maven.print_error(execution_result)
 
     return execution_result.return_code
 
