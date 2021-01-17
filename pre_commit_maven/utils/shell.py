@@ -23,7 +23,6 @@ def execute(cmd, **kwargs):
     kwargs.setdefault("shell", True)
     kwargs.setdefault("bufsize", 1)
 
-    print(kwargs)
     process = subprocess.Popen(" ".join(cmd), **kwargs)
     stdout, stderr = process.communicate()
 
