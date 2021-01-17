@@ -25,7 +25,7 @@ def test_given_goals_then_run_maven(mocker):
     shell_runner.execute.return_value = ExecutionResult(0, "", "")
 
     # when
-    execute(["clean"], ".", shell_runner)
+    execute(["clean"], ".", shell_runner, {})
 
     # then
     shell_runner.exists_file.assert_called_once_with("./mvnw")
@@ -41,7 +41,7 @@ def test_given_mvnw_exists_then_run_mvnw(mocker):
     shell_runner.execute.return_value = ExecutionResult(0, "", "")
 
     # when
-    execute(["clean"], ".", shell_runner)
+    execute(["clean"], ".", shell_runner, {})
 
     # then
     shell_runner.exists_file.assert_called_once_with("./mvnw")
