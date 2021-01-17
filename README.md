@@ -27,6 +27,9 @@ repos:
 #### `maven`
 Runs arbitrary maven commands. `args: ['clean compile verify']`.
 
+#### `maven-test`
+Runs test build lifecycle.
+
 #### `maven-spotless-check`
 Runs spotless:check.
 

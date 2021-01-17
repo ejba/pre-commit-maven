@@ -5,6 +5,13 @@
   language: python
   pass_filenames: false
 
+- id: maven-clean
+  name: maven clean
+  description: Runs maven test build lifecycle for java projects
+  entry: maven-clean
+  language: python
+  pass_filenames: false
+
 - id: maven-spotless-check
   name: maven spotless check
   description: Runs spotless:check goal
