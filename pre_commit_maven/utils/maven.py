@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 from pre_commit_maven.utils import shell
 from pre_commit_maven.utils.shell import ExecutionResult
 
@@ -21,6 +23,6 @@ def execute_goals(goals: list, cwd: str, shell_runner=shell):
 
 
 def print_error(execution_result: ExecutionResult, print_fn=print):
-    for line in execution_result.stdout:
+    for line in execution_result.stdout.splitlines():
         if line.startswith("[ERROR]"):
             print_fn(f"{Colours.FAIL}{line}{Colours.ENDC}")
