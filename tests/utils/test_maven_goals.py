@@ -23,4 +23,4 @@ def test_given_goals_then_run_maven(mocker):
     execute_goals(["clean"], ".", shell_runner)
 
     # then
-    shell_runner.execute.assert_called_once_with(["mvn", "clean"], cwd=".")
+    shell_runner.execute.assert_called_once_with(["mvn", "-B", "clean"], cwd=".")
