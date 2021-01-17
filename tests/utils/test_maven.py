@@ -19,13 +19,29 @@ def test_given_none_goals_then_throws_assertion_error():
 def test_given_goals_then_run_maven(mocker):
     # given
     shell_runner = mocker.patch("pre_commit_maven.utils.shell")
+    shell_runner.exists_file.return_value = False
     shell_runner.execute.return_value = ExecutionResult(0, "", "")
 
     # when
     execute_goals(["clean"], ".", shell_runner)
 
     # then
+    shell_runner.exists_file.assert_called_once_with("./mvnw")
     shell_runner.execute.assert_called_once_with(["mvn", "-B", "clean"], cwd=".")
+
+
+def test_given_mvnw_exists_then_run_mvnw(mocker):
+    # given
+    shell_runner = mocker.patch("pre_commit_maven.utils.shell")
+    shell_runner.exists_file.return_value = True
+    shell_runner.execute.return_value = ExecutionResult(0, "", "")
+
+    # when
+    execute_goals(["clean"], ".", shell_runner)
+
+    # then
+    shell_runner.exists_file.assert_called_once_with("./mvnw")
+    shell_runner.execute.assert_called_once_with(["./mvnw", "-B", "clean"], cwd=".")
 
 
 def test_given_stdout_without_error_log_then_prints_nothing(mocker):

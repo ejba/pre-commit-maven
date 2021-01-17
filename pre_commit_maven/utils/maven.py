@@ -1,5 +1,7 @@
 from __future__ import print_function
 
+import os.path
+
 from pre_commit_maven.utils import shell
 from pre_commit_maven.utils.shell import ExecutionResult
 
@@ -15,10 +17,19 @@ class Colours:
     UNDERLINE = "\033[4m"
 
 
+def get_maven_path(cwd: str, shell_runner=shell):
+    path = ""
+    mvn_wrapper_path = os.path.join(cwd, "mvnw")
+    if shell_runner.exists_file(mvn_wrapper_path):
+        path = mvn_wrapper_path
+    else:
+        path = "mvn"
+    return path
+
+
 def execute_goals(goals: list, cwd: str, shell_runner=shell):
     assert goals is not None and len(goals) > 0, "goals not specified"
-
-    cmd = ["mvn", "-B"] + goals
+    cmd = [get_maven_path(cwd, shell_runner), "-B"] + goals
     return shell_runner.execute(cmd, cwd=cwd)
 
 

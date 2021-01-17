@@ -1,5 +1,6 @@
 import subprocess
 from subprocess import CalledProcessError
+from pathlib import Path
 
 
 class ExecutionResult:
@@ -26,3 +27,17 @@ def execute(cmd: list, **kwargs):
     stdout, stderr = process.communicate()
 
     return ExecutionResult(process.returncode, stdout, stderr)
+
+
+def exists_file(file_path: str) -> bool:
+    path = Path(file_path)
+    return path.exists() and path.is_file()
+
+
+def exists_program(program_name: str) -> bool:
+    result = True
+    try:
+        which(program_name)
+    except:
+        result = False
+    return result
