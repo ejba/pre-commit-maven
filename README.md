@@ -13,18 +13,19 @@ See also: https://github.com/pre-commit/pre-commit
 Add this to your `.pre-commit-config.yaml`
 
 ```yaml
+repos:
 -   repo: https://github.com/ejba/pre-commit-maven
-    rev: 0.1.0
+    rev: v0.1.0
     hooks:
-    -   id: maven-goals
+    -   id: maven
         args: ['clean compile']
     # -   id: ...
 ```
 
 ### Hooks available
 
-#### `maven-goals`
-Runs arbitrary maven goals. `args: ['clean compile verify']`.
+#### `maven`
+Runs arbitrary maven commands. `args: ['clean compile verify']`.
 
 #### `maven-spotless-check`
 Runs spotless:check.

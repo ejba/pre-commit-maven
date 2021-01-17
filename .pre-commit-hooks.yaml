@@ -1,7 +1,7 @@
-- id: maven-goals
-  name: maven goals
-  description: Runs arbitrary maven goals for java projects
-  entry: maven-goals
+- id: maven
+  name: maven
+  description: Runs arbitrary maven commands for java projects
+  entry: maven
   language: python
   pass_filenames: false
 
