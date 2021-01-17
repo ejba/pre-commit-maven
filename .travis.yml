@@ -1,9 +1,6 @@
 language: python
 python:
   - "3.7"
-  - "3.8"
-  - "3.9"
-  - "3.9-dev"
   - "nightly"
 env:
   - CODECOV_TOKEN=194cff37-3a7a-4186-aaff-8f4d82fc9fb1
@@ -16,6 +13,8 @@ install:
   - pip install -r requirements-dev.txt
   - pip install .
 script:
+  - java --version
+  - mvn --version
   - coverage erase
   - coverage run -m pytest --cov-report term tests integration
   - coverage report --fail-under 80
