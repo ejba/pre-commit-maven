@@ -1,0 +1,4 @@
+#Mon Jan 18 23:15:24 WET 2021
+configuration*?=2F8BEE75A62B3B419D39E65E9A29A439F87F0A0B
+module-resource*?\:checkstyle-xpath-suppressions.xml=BD3D883B658DC57353D94E9D827EB1597A07F563
+module-resource*?\:checkstyle-suppressions.xml=DA7F83402DF6A6F3FF7C3B995564295881B81692
