@@ -1,5 +1,3 @@
-from __future__ import print_function
-
 import argparse
 import os.path
 from pre_commit_maven.utils import maven
@@ -14,8 +12,7 @@ def main(argv: list, cwd=CWD, print_fn=print) -> int:
     args = parser.parse_args(argv)
 
     if args.goals is None or len(args.goals) == 0:
-        print_fn("goals not specified")
-        return 1
+        parser.error("No goals provided.")
 
     return generic_main.execute(args.goals, cwd)
 
