@@ -32,12 +32,3 @@ def execute(cmd, **kwargs):
 def exists_file(file_path: str) -> bool:
     path = Path(file_path)
     return path.exists() and path.is_file()
-
-
-def exists_program(program_name: str) -> bool:
-    result = True
-    try:
-        which(program_name)
-    except:
-        result = False
-    return result
