@@ -12,6 +12,13 @@
   language: python
   pass_filenames: false
 
+- id: maven-compile
+  name: maven compile
+  description: Runs maven compile build lifecycle
+  entry: maven-compile
+  language: python
+  pass_filenames: false
+
 - id: maven-spotless-check
   name: maven spotless check
   description: Runs spotless:check goal
