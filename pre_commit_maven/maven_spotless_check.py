@@ -5,8 +5,8 @@ from pre_commit_maven.utils import generic_main
 CWD = os.getcwd()
 
 
-def main(cwd=CWD, print_fn=print) -> int:
-    return generic_main.execute(["spotless:check"], cwd)
+def main(cwd=CWD, print_fn=print, execute_fn=generic_main.execute) -> int:
+    return execute_fn(["spotless:check"], cwd)
 
 
 if __name__ == "__main__":

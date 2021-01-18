@@ -6,15 +6,16 @@ from pre_commit_maven.utils import generic_main
 CWD = os.getcwd()
 
 
-def main(argv: list, cwd=CWD, print_fn=print) -> int:
+def main(argv: list, cwd=CWD, print_fn=print, execute_fn=generic_main.execute) -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("goals", nargs="*", help="maven goals to run")
     args = parser.parse_args(argv)
 
-    if args.goals is None or len(args.goals) == 0:
+    if not any(args.goals):
         parser.error("No goals provided.")
+        return 1
 
-    return generic_main.execute(args.goals, cwd)
+    return execute_fn(args.goals, cwd)
 
 
 if __name__ == "__main__":
