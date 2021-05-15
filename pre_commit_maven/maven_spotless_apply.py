@@ -6,7 +6,7 @@ CWD = os.getcwd()
 
 
 def main(cwd=CWD, print_fn=print, execute_fn=generic_main.execute) -> int:
-    return execute_fn(["spotless:apply"], cwd)
+    return execute_fn(["spotless:apply || true"], cwd)
 
 
 if __name__ == "__main__":
