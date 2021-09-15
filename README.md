@@ -15,7 +15,7 @@ Add this to your `.pre-commit-config.yaml`
 ```yaml
 repos:
 -   repo: https://github.com/ejba/pre-commit-maven
-    rev: v0.2.0
+    rev: v0.2.1
     hooks:
     -   id: maven
         args: ['clean compile']
