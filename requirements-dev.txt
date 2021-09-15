@@ -5,3 +5,4 @@ covdefaults
 coverage
 codecov
 tox
+typing
