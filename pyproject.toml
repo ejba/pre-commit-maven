@@ -1,6 +1,6 @@
 [project]
 name = "pre-commit-maven"
-version = "v0.3.2"
+version = "v0.3.3"
 
 [build-system]
 requires = ["setuptools >= 40.6.0", "wheel"]
