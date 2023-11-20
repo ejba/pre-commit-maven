@@ -1,6 +1,7 @@
 [project]
 name = "pre-commit-maven"
 version = "v0.3.3"
+dynamic = ["description", "dependencies", "scripts", "requires-python"]
 
 [build-system]
 requires = ["setuptools >= 40.6.0", "wheel"]
